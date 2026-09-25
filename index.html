@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no,
+               viewport-fit=cover">
+
+<title>Margaretas iPhone</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    color: #fff;
+    overflow: hidden;
+
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+
+/* MAIN SCREEN */
+
+.phone {
+    width: 100%;
+    height: 100dvh;
+
+    min-height: 520px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding-top: max(52px, env(safe-area-inset-top));
+    padding-left: 22px;
+    padding-right: 22px;
+    padding-bottom: max(28px, env(safe-area-inset-bottom));
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            #1c1c1e 0%,
+            #101011 35%,
+            #050505 70%,
+            #000000 100%
+        );
+}
+
+
+/* HEADER */
+
+.header {
+    width: 100%;
+    text-align: center;
+}
+
+.device {
+    font-size: 15px;
+    font-weight: 500;
+    color: #f2f2f7;
+    margin-bottom: 9px;
+}
+
+.title {
+    font-size: clamp(25px, 7vw, 30px);
+    font-weight: 400;
+    letter-spacing: -0.7px;
+    margin-bottom: 8px;
+}
+
+.date {
+    color: #8e8e93;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+/* CENTER */
+
+.content {
+    flex: 1;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ANIMATED WAVEFORM */
+
+.waveform-container {
+    width: 100%;
+    max-width: 390px;
+
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    margin-bottom: 25px;
+
+    overflow: hidden;
+}
+
+.waveform {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+}
+
+.bar {
+    width: 3px;
+
+    background: rgba(80, 170, 220, 0.42);
+
+    border-radius: 5px;
+
+    opacity: 0.65;
+
+    transform-origin: center;
+
+    transition:
+        background 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+/*
+    The waveform is deliberately NOT connected
+    to the timeline. It is purely visual, so
+    scrubbing continues to work independently.
+*/
+
+.waveform.playing .bar {
+    animation: waveformPulse 0.9s ease-in-out infinite alternate;
+}
+
+
+/* Different animation speeds make it feel organic */
+
+.waveform.playing .bar:nth-child(2n) {
+    animation-duration: 0.72s;
+}
+
+.waveform.playing .bar:nth-child(3n) {
+    animation-duration: 1.05s;
+}
+
+.waveform.playing .bar:nth-child(4n) {
+    animation-duration: 0.82s;
+}
+
+.waveform.playing .bar:nth-child(5n) {
+    animation-duration: 1.18s;
+}
+
+
+@keyframes waveformPulse {
+
+    0% {
+        transform: scaleY(0.35);
+        opacity: 0.35;
+    }
+
+    50% {
+        transform: scaleY(0.85);
+        opacity: 0.55;
+    }
+
+    100% {
+        transform: scaleY(1.15);
+        opacity: 0.75;
+    }
+
+}
+
+
+/* Individual starting heights */
+
+.bar:nth-child(1)  { height: 20px; }
+.bar:nth-child(2)  { height: 34px; }
+.bar:nth-child(3)  { height: 48px; }
+.bar:nth-child(4)  { height: 27px; }
+.bar:nth-child(5)  { height: 55px; }
+.bar:nth-child(6)  { height: 37px; }
+.bar:nth-child(7)  { height: 68px; }
+.bar:nth-child(8)  { height: 45px; }
+.bar:nth-child(9)  { height: 76px; }
+.bar:nth-child(10) { height: 52px; }
+.bar:nth-child(11) { height: 87px; }
+.bar:nth-child(12) { height: 61px; }
+.bar:nth-child(13) { height: 73px; }
+.bar:nth-child(14) { height: 47px; }
+.bar:nth-child(15) { height: 82px; }
+.bar:nth-child(16) { height: 57px; }
+.bar:nth-child(17) { height: 70px; }
+.bar:nth-child(18) { height: 42px; }
+.bar:nth-child(19) { height: 62px; }
+.bar:nth-child(20) { height: 34px; }
+.bar:nth-child(21) { height: 51px; }
+.bar:nth-child(22) { height: 27px; }
+.bar:nth-child(23) { height: 41px; }
+.bar:nth-child(24) { height: 21px; }
+.bar:nth-child(25) { height: 32px; }
+.bar:nth-child(26) { height: 47px; }
+.bar:nth-child(27) { height: 66px; }
+.bar:nth-child(28) { height: 39px; }
+.bar:nth-child(29) { height: 58px; }
+.bar:nth-child(30) { height: 76px; }
+.bar:nth-child(31) { height: 49px; }
+.bar:nth-child(32) { height: 69px; }
+.bar:nth-child(33) { height: 44px; }
+.bar:nth-child(34) { height: 60px; }
+.bar:nth-child(35) { height: 35px; }
+.bar:nth-child(36) { height: 52px; }
+.bar:nth-child(37) { height: 29px; }
+.bar:nth-child(38) { height: 43px; }
+.bar:nth-child(39) { height: 25px; }
+.bar:nth-child(40) { height: 18px; }
+
+
+/* TIMELINE */
+
+.timeline {
+    width: 100%;
+    max-width: 390px;
+
+    height: 30px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 18px;
+
+    touch-action: none;
+}
+
+.track {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background: #3a3a3c;
+
+    border-radius: 5px;
+}
+
+.progress {
+    position: absolute;
+
+    left: 0;
+
+    height: 4px;
+
+    width: 0%;
+
+    background: #8ac7e8;
+
+    border-radius: 5px;
+}
+
+.scrubber {
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    left: 0%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #f2f2f7;
+
+    box-shadow:
+        0 1px 6px rgba(0,0,0,0.6);
+
+    pointer-events: none;
+}
+
+
+/* TIME */
+
+.times {
+    width: 100%;
+    max-width: 390px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #8e8e93;
+
+    font-size: 12px;
+
+    margin-bottom: 38px;
+}
+
+
+/* CONTROLS */
+
+.controls {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 38px;
+}
+
+
+/* RESTART */
+
+.restart {
+    width: 52px;
+    height: 52px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.restart:active {
+    transform: scale(0.93);
+
+    background: rgba(255,255,255,0.15);
+}
+
+
+/* PLAY BUTTON */
+
+.play-button {
+    width: 76px;
+    height: 76px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f2f2f7;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 18px rgba(0,0,0,0.35);
+
+    transition:
+        transform 0.12s ease;
+}
+
+.play-button:active {
+    transform: scale(0.93);
+}
+
+
+/* PLAY ICON */
+
+.play-icon {
+    width: 0;
+    height: 0;
+
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+
+    border-left: 19px solid #111;
+
+    margin-left: 5px;
+}
+
+
+/* PAUSE ICON */
+
+.playing .play-icon {
+    width: 18px;
+    height: 23px;
+
+    border: none;
+
+    margin-left: 0;
+
+    position: relative;
+}
+
+.playing .play-icon::before,
+.playing .play-icon::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    width: 6px;
+    height: 23px;
+
+    background: #111;
+
+    border-radius: 2px;
+}
+
+.playing .play-icon::before {
+    left: 0;
+}
+
+.playing .play-icon::after {
+    right: 0;
+}
+
+
+/* LABEL */
+
+.button-label {
+    margin-top: 18px;
+
+    color: #8e8e93;
+
+    font-size: 15px;
+
+    min-height: 20px;
+}
+
+
+/* BOTTOM */
+
+.bottom {
+    height: 20px;
+}
+
+
+/* SMALL IPHONES */
+
+@media (max-width: 430px) {
+
+    .phone {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .waveform-container,
+    .timeline,
+    .times {
+        max-width: 100%;
+    }
+
+    .waveform-container {
+        height: 85px;
+    }
+
+    .times {
+        margin-bottom: 30px;
+    }
+
+}
+
+
+/* SHORT SCREENS */
+
+@media (max-height: 650px) {
+
+    .phone {
+        padding-top:
+            max(38px, env(safe-area-inset-top));
+    }
+
+    .waveform-container {
+        height: 65px;
+        margin-bottom: 15px;
+    }
+
+    .times {
+        margin-bottom: 20px;
+    }
+
+    .play-button {
+        width: 66px;
+        height: 66px;
+    }
+
+    .controls {
+        gap: 28px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="phone">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="device">
+            Margaretas iPhone
+        </div>
+
+        <div class="title">
+            Ny inspelning 3
+        </div>
+
+        <div class="date">
+            2:48 – 21 sep 2026
+        </div>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+
+        <!-- ANIMATED WAVEFORM -->
+
+        <div class="waveform-container">
+
+            <div class="waveform" id="waveform">
+
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCRUBBING TIMELINE -->
+
+        <div
+            class="timeline"
+            id="timeline">
+
+            <div class="track"></div>
+
+            <div
+                class="progress"
+                id="progress">
+            </div>
+
+            <div
+                class="scrubber"
+                id="scrubber">
+            </div>
+
+        </div>
+
+
+        <!-- TIME -->
+
+        <div class="times">
+
+            <span id="currentTime">
+                0:00
+            </span>
+
+            <span id="duration">
+                2:48
+            </span>
+
+        </div>
+
+
+        <!-- CONTROLS -->
+
+        <div class="controls">
+
+            <button
+                class="restart"
+                id="restart"
+                aria-label="Börja om">
+
+                ↺
+
+            </button>
+
+
+            <button
+                class="play-button"
+                id="playButton"
+                aria-label="Spela upp">
+
+                <span class="play-icon"></span>
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="button-label"
+            id="buttonLabel">
+
+            Spela upp
+
+        </div>
+
+    </div>
+
+
+    <div class="bottom"></div>
+
+
+    <!-- AUDIO -->
+
+    <audio
+        id="recording"
+        preload="metadata">
+
+        <source
+            src="secret-recording.mp3"
+            type="audio/mpeg">
+
+    </audio>
+
+</div>
+
+
+<script>
+
+const audio =
+    document.getElementById("recording");
+
+const playButton =
+    document.getElementById("playButton");
+
+const restart =
+    document.getElementById("restart");
+
+const waveform =
+    document.getElementById("waveform");
+
+const progress =
+    document.getElementById("progress");
+
+const scrubber =
+    document.getElementById("scrubber");
+
+const timeline =
+    document.getElementById("timeline");
+
+const currentTime =
+    document.getElementById("currentTime");
+
+const durationDisplay =
+    document.getElementById("duration");
+
+const label =
+    document.getElementById("buttonLabel");
+
+
+/* PLAY / PAUSE */
+
+playButton.addEventListener("click", function() {
+
+    if (audio.paused) {
+
+        audio.play();
+
+        playButton.classList.add("playing");
+
+        waveform.classList.add("playing");
+
+        label.textContent = "Paus";
+
+    } else {
+
+        audio.pause();
+
+        playButton.classList.remove("playing");
+
+        waveform.classList.remove("playing");
+
+        label.textContent = "Spela upp";
+
+    }
+
+});
+
+
+/* RESTART */
+
+restart.addEventListener("click", function() {
+
+    audio.currentTime = 0;
+
+    updateProgress();
+
+    audio.play();
+
+    playButton.classList.add("playing");
+
+    waveform.classList.add("playing");
+
+    label.textContent = "Paus";
+
+});
+
+
+/* UPDATE TIMELINE */
+
+audio.addEventListener(
+    "timeupdate",
+    updateProgress
+);
+
+
+function updateProgress() {
+
+    if (!audio.duration) {
+        return;
+    }
+
+    const percent =
+        (audio.currentTime / audio.duration) * 100;
+
+    progress.style.width =
+        percent + "%";
+
+    scrubber.style.left =
+        percent + "%";
+
+    currentTime.textContent =
+        formatTime(audio.currentTime);
+
+}
+
+
+/* FORMAT TIME */
+
+function formatTime(seconds) {
+
+    if (!isFinite(seconds)) {
+        return "0:00";
+    }
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secs =
+        Math.floor(seconds % 60)
+        .toString()
+        .padStart(2, "0");
+
+    return minutes + ":" + secs;
+
+}
+
+
+/* TIMELINE SCRUBBING */
+
+function seekFromEvent(event) {
+
+    if (!audio.duration) {
+        return;
+    }
+
+    const rect =
+        timeline.getBoundingClientRect();
+
+    let percent =
+        (event.clientX - rect.left) /
+        rect.width;
+
+    percent =
+        Math.max(0, Math.min(1, percent));
+
+    audio.currentTime =
+        percent * audio.duration;
+
+    updateProgress();
+
+}
+
+
+/* TAP TIMELINE */
+
+timeline.addEventListener(
+    "pointerdown",
+    function(event) {
+
+        seekFromEvent(event);
+
+        timeline.setPointerCapture(
+            event.pointerId
+        );
+
+    }
+);
+
+
+/* DRAG TIMELINE */
+
+timeline.addEventListener(
+    "pointermove",
+    function(event) {
+
+        if (
+            timeline.hasPointerCapture(
+                event.pointerId
+            )
+        ) {
+
+            seekFromEvent(event);
+
+        }
+
+    }
+);
+
+
+/* AUDIO FINISHED */
+
+audio.addEventListener(
+    "ended",
+    function() {
+
+        playButton.classList.remove(
+            "playing"
+        );
+
+        waveform.classList.remove(
+            "playing"
+        );
+
+        label.textContent =
+            "Spela upp igen";
+
+    }
+);
+
+
+/* AUDIO PAUSED */
+
+audio.addEventListener(
+    "pause",
+    function() {
+
+        if (
+            audio.currentTime <
+            audio.duration
+        ) {
+
+            playButton.classList.remove(
+                "playing"
+            );
+
+            waveform.classList.remove(
+                "playing"
+            );
+
+        }
+
+    }
+);
+
+
+/* LOAD ACTUAL AUDIO LENGTH */
+
+audio.addEventListener(
+    "loadedmetadata",
+    function() {
+
+        durationDisplay.textContent =
+            formatTime(audio.duration);
+
+    }
+);
+
+</script>
+
+</body>
